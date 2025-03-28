@@ -25,9 +25,13 @@ if "InfiniteYou" not in folder_paths.folder_names_and_paths:
     current_paths = [MODELS_DIR]
 else:
     current_paths, _ = folder_paths.folder_names_and_paths["InfiniteYou"]
+if os.path.exists(folder_paths.cache_dir):
+    current_paths.append(os.path.join(folder_paths.cache_dir, "InfiniteYou"))
 folder_paths.folder_names_and_paths["InfiniteYou"] = (current_paths, folder_paths.supported_pt_extensions)
 
 INSIGHTFACE_DIR = os.path.join(folder_paths.models_dir, "insightface")
+if os.path.exists(folder_paths.cache_dir):
+    INSIGHTFACE_DIR = os.path.join(folder_paths.cache_dir, "insightface")
 
 arcface_dst = np.array(
     [[38.2946, 51.6963], [73.5318, 51.5014], [56.0252, 71.7366],
