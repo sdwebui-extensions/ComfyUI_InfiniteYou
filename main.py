@@ -73,7 +73,7 @@ def extract_arcface_bgr_embedding(in_image, landmark, arcface_model=None, in_set
     arc_face_image = 2 * arc_face_image - 1
     arc_face_image = arc_face_image.cuda().contiguous()
     if arcface_model is None:
-        arcface_model = init_recognition_model('arcface', device='cuda', model_rootpath="/stable-diffusion-cache/models")
+        arcface_model = init_recognition_model('arcface', device='cuda', model_rootpath="/stable-diffusion-cache/models/facexlib/weights")
     face_emb = arcface_model(arc_face_image)[0] # [512], normalized
     return face_emb
 
@@ -98,7 +98,7 @@ class InfiniteYou(torch.nn.Module):
                                 root=INSIGHTFACE_DIR, providers=['CUDAExecutionProvider', 'CPUExecutionProvider'])
         self.app_160.prepare(ctx_id=0, det_size=(160, 160))
 
-        self.arcface_model = init_recognition_model('arcface', device='cuda', model_rootpath="/stable-diffusion-cache/models")
+        self.arcface_model = init_recognition_model('arcface', device='cuda', model_rootpath="/stable-diffusion-cache/models/facexlib/weights")
         
 
     def init_proj(self):
