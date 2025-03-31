@@ -78,47 +78,6 @@
       ]
     },
     {
-      "id": 5,
-      "type": "CLIPTextEncode",
-      "pos": [
-        581.7357788085938,
-        561.47509765625
-      ],
-      "size": [
-        400,
-        200
-      ],
-      "flags": {},
-      "order": 9,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "clip",
-          "type": "CLIP",
-          "link": 7
-        }
-      ],
-      "outputs": [
-        {
-          "name": "CONDITIONING",
-          "shape": 3,
-          "type": "CONDITIONING",
-          "links": [
-            9
-          ]
-        }
-      ],
-      "title": "CLIP Text Encode (Positive Prompt)",
-      "properties": {
-        "cnr_id": "comfy-core",
-        "ver": "0.3.27",
-        "Node name for S&R": "CLIPTextEncode"
-      },
-      "widgets_values": [
-        ""
-      ]
-    },
-    {
       "id": 4,
       "type": "CLIPTextEncode",
       "pos": [
@@ -238,7 +197,8 @@
         "cnr_id": "comfy-core",
         "ver": "0.3.27",
         "Node name for S&R": "VAEDecode"
-      }
+      },
+      "widgets_values": []
     },
     {
       "id": 13,
@@ -267,104 +227,7 @@
         "ver": "0.3.27",
         "Node name for S&R": "PreviewImage"
       },
-      "widgets_values": [
-        ""
-      ]
-    },
-    {
-      "id": 7,
-      "type": "InfiniteYouApply",
-      "pos": [
-        1266.249267578125,
-        327.60498046875
-      ],
-      "size": [
-        359,
-        316.5
-      ],
-      "flags": {},
-      "order": 11,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "control_net",
-          "type": "CONTROL_NET",
-          "link": 4
-        },
-        {
-          "name": "model",
-          "type": "MODEL",
-          "link": 3
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "link": 10
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "link": 9
-        },
-        {
-          "name": "ref_image",
-          "type": "IMAGE",
-          "link": 11
-        },
-        {
-          "name": "latent_image",
-          "type": "LATENT",
-          "link": 12
-        },
-        {
-          "name": "vae",
-          "type": "VAE",
-          "link": 2
-        }
-      ],
-      "outputs": [
-        {
-          "name": "MODEL",
-          "type": "MODEL",
-          "links": [
-            13
-          ]
-        },
-        {
-          "name": "positive",
-          "type": "CONDITIONING",
-          "links": [
-            14
-          ]
-        },
-        {
-          "name": "negative",
-          "type": "CONDITIONING",
-          "links": [
-            15
-          ]
-        },
-        {
-          "name": "latent",
-          "type": "LATENT",
-          "links": [
-            16
-          ]
-        }
-      ],
-      "properties": {
-        "aux_id": "ZenAI-Comfy/ComfyUI_InfiniteYou",
-        "ver": "ae7da6a30302ad0aa233583709588c6ffe11153b",
-        "Node name for S&R": "InfiniteYouApply"
-      },
-      "widgets_values": [
-        "sim_stage1_control_net/sim_stage1_img_proj.bin",
-        "CUDA",
-        1.0000000000000002,
-        0,
-        1,
-        false
-      ]
+      "widgets_values": []
     },
     {
       "id": 11,
@@ -462,8 +325,7 @@
       },
       "widgets_values": [
         "ref_2.png",
-        "image",
-        ""
+        "image"
       ]
     },
     {
@@ -615,6 +477,141 @@
       ],
       "color": "#323",
       "bgcolor": "#535"
+    },
+    {
+      "id": 5,
+      "type": "CLIPTextEncode",
+      "pos": [
+        581.7357788085938,
+        561.47509765625
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "shape": 3,
+          "type": "CONDITIONING",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "title": "CLIP Text Encode (Positive Prompt)",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.3.27",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 7,
+      "type": "InfiniteYouApply",
+      "pos": [
+        1266.249267578125,
+        327.60498046875
+      ],
+      "size": [
+        359,
+        316.5
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "control_net",
+          "type": "CONTROL_NET",
+          "link": 4
+        },
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 3
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 10
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 9
+        },
+        {
+          "name": "ref_image",
+          "type": "IMAGE",
+          "link": 11
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 12
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "links": [
+            15
+          ]
+        },
+        {
+          "name": "latent",
+          "type": "LATENT",
+          "links": [
+            16
+          ]
+        }
+      ],
+      "properties": {
+        "aux_id": "ZenAI-Comfy/ComfyUI_InfiniteYou",
+        "ver": "ae7da6a30302ad0aa233583709588c6ffe11153b",
+        "Node name for S&R": "InfiniteYouApply"
+      },
+      "widgets_values": [
+        "sim_stage1_control_net/sim_stage1_img_proj.bin",
+        1.0000000000000002,
+        1.0000000000000002,
+        0,
+        1
+      ]
     }
   ],
   "links": [
@@ -773,10 +770,10 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.6830134553650712,
+      "scale": 0.7400249944258247,
       "offset": [
-        -4.839697599797408,
-        -113.3205220798221
+        -51.58413203867025,
+        -65.15427068735033
       ]
     }
   },

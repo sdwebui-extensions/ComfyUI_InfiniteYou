@@ -12,6 +12,7 @@ Native support for [InfiniteYou](https://github.com/bytedance/InfiniteYou) in [C
 ---
 
 ## 🔥 News
+- **[03/2025]** 🔥 Integrate Face Swap feature
 - **[03/2025]** 🔥 Integrate Face Combine feature to predict future children
 - **[03/2025]** 🔥 Code updated and released as the first version.
 
@@ -50,6 +51,9 @@ To ensure seamless integration with **ComfyUI**, we have converted the model to 
 
 ### **FaceCombine Task**
 ![Children](https://github.com/ZenAI-Comfy/ComfyUI_InfiniteYou/blob/main/assets/face_combine_workflow.png)
+
+### **FaceSwap Task**
+![FaceSwap](https://github.com/ZenAI-Comfy/ComfyUI_InfiniteYou/blob/main/assets/face_swap.jpg)
 ---
 
 ## 📦 Installation
@@ -66,6 +70,7 @@ pip install -r requirements.txt
 ```
 
 ### Step 3: Download ControlNet Models
+Place the ControlNet Models in the `ComfyUI/models/controlnet` directory.
 ```bash
 cd ../../models/controlnet
 wget https://huggingface.co/vuongminhkhoi4/ComfyUI_InfiniteYou/resolve/main/aes_stage2_control_net/aes_stage2_control.safetensors
@@ -73,6 +78,7 @@ wget https://huggingface.co/vuongminhkhoi4/ComfyUI_InfiniteYou/resolve/main/sim_
 cd ..
 ```
 ### Step 4: Download Image Projection Files
+Place the Image Projection files in the `ComfyUI/models/InfiniteYou` directory.
 ```bash
 mkdir InfiniteYou
 cd InfiniteYou
@@ -98,8 +104,9 @@ pip install -r ComfyUI_InfiniteYou/requirements.txt
 
 🔹 For `sim_stage1`: Try file `sim_stages1.json` in `workflows`
 
-Predict your future children
-🔹 For `Face Combine`: Try file `face_combine.json` in `workflows`
+🔹 For `Face Combine` to predict your future children: Try file `face_combine.json` in `workflows`
+
+🔹 For `Face Swap` : Try file `face_swap.json` in `workflows`
 
 
 
@@ -110,4 +117,16 @@ This implementation of InfiniteYou is brought to you by the ZenAI Team.
 
 If you need more polished and enhanced version, please contact us through:  
 - 📱 **Facebook Page**: [ZenAI](https://web.facebook.com/zenai.vn)  
-- ☎️ **Phone**: 0971912713 Miss. Chi  
+- ☎️ **Phone**: 0971912713 Miss. Chi 
+
+## 📖 Citation
+
+```bibtex
+@article{jiang2025infiniteyou,
+  title={{InfiniteYou}: Flexible Photo Recrafting While Preserving Your Identity},
+  author={Jiang, Liming and Yan, Qing and Jia, Yumin and Liu, Zichuan and Kang, Hao and Lu, Xin},
+  journal={arXiv preprint},
+  volume={arXiv:2503.16418},
+  year={2025}
+}
+```
