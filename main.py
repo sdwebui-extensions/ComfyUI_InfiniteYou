@@ -448,6 +448,7 @@ class SwapFace:
                 "weight": ("FLOAT", {"default": 1, "min": 0.0, "max": 5.0, "step": 0.01, }),
                 "start_at": ("FLOAT", {"default": 0.0, "min": 0.0, "max": 1.0, "step": 0.001, }),
                 "end_at": ("FLOAT", {"default": 1.0, "min": 0.0, "max": 1.0, "step": 0.001, }),
+                "blur_kernel": ("INT", {"default": 9, "min": 1, "max": 100, "step": 1, }),
                 "vae": ("VAE", ),
             },
             "optional": {
@@ -460,7 +461,7 @@ class SwapFace:
     FUNCTION = "apply_face_swap"
     CATEGORY = "ComfyUI-InfiniteYou"
 
-    def apply_face_swap(self, adapter_file, control_net, model, ref_image, image, clip, start_at, end_at, vae, weight=.99,  ip_weight=None, cn_strength=None, noise=0.35, image_kps=None, mask=None, combine_embeds='average'):
+    def apply_face_swap(self, adapter_file, control_net, model, ref_image, image, clip, start_at, end_at, vae, weight=.99, blur_kernel=9,  ip_weight=None, cn_strength=None, noise=0.35, image_kps=None, mask=None, combine_embeds='average'):
         ref_image = tensor_to_image(ref_image)
         ref_image = PIL.Image.fromarray(ref_image.astype(np.uint8))
         ref_image = ref_image.convert("RGB")
@@ -484,7 +485,7 @@ class SwapFace:
         cn_strength = weight if cn_strength is None else cn_strength
 
         if mask is None:
-            mask, landmark = self.prepare_mask_and_landmark(infinteyou_model, image, 9)
+            mask, landmark = self.prepare_mask_and_landmark(infinteyou_model, image, blur_kernel)
         else:
             _, landmark = infinteyou_model.get_face_embed_and_landmark(image)
 
@@ -649,6 +650,7 @@ class SwapFace:
 
         # Apply the expanded mask
         mask[new_y1:new_y2, new_x1:new_x2] = 1
+        mask = cv2.GaussianBlur(mask, (blur_kernel, blur_kernel), 0)
 
         mask = torch.from_numpy(mask).unsqueeze(0).float()
         return mask, landmark
